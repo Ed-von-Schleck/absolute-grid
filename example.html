@@ -3,9 +3,178 @@
 <head>
   <meta charset="utf-8">
   <title>Absolute-Grid Example</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="absolute-grid.js"></script>
+  <link rel="stylesheet" href="absolute-grid.css">
+  <script>
+    $(document).ready(function() {
+      //$('#grid').absoluteGrid();
+      $(window).resize();
+    });
+    
+    $(window).resize(function() {
+      if ($(this).width() < 720) {
+        // style arrow
+        $('.arrowhead').css('border-width', $('.arrow1').width())
+        $('.arrow1').each(function(){
+          var position = $(this).position();
+          var monthHeight = $(this).closest(".month").outerHeight();
+          $(this).height( monthHeight - position.top);
+        });
+        $('.arrowhead').each(function(){
+          var position = $(this).position();
+          var monthHeight = $(this).closest(".month").outerHeight();
+          $(this).css("top", monthHeight - $(this).height());
+        });
+      } else{
+        var i = 0;
+        $('.month').each(function(){
+          broadcastWidth = $(this).find('.broadcast').width();
+          broadcastHeight = $(this).find('.broadcast').height();
+          videoWidth = $(this).find('.video').width();
+          videoHeight = $(this).find('.video').height();
+          $(this).height(broadcastHeight * 2);
+          
+          if (i%2 == 0) {
+            // odd
+            // position videos
+            $($(this).children('.video')[0]).css('left', '50%');
+            $($(this).children('.video')[0]).css('top', broadcastHeight / 2.5);
+            $($(this).children('.video')[1]).css('top', broadcastHeight * 1.1);
+            $($(this).children('.video')[2]).css('left', '35%');
+            $($(this).children('.video')[2]).css('top', broadcastHeight * 1.1);
+            // style arrow
+            $(this).children('.arrow1').css('top', '10%');
+            $(this).children('.arrow1').css('left', '55%');
+            $(this).children('.arrow1').width('40%');
+            $(this).children('.arrow1').height('10%');
+            $(this).children('.arrow2').css('top', '10%');
+            $(this).children('.arrow2').css('left', '85%');
+            $(this).children('.arrow2').width('10%');
+            $(this).children('.arrow2').height('70%');
+            $(this).children('.arrowhead').css('top', '75%');
+            $(this).children('.arrowhead').css('border-width', $('.arrow2').width());
+          } else {
+            // even
+            // position videos
+            $($(this).children('.video')[0]).css('left', '15%');
+            $($(this).children('.video')[0]).css('top', broadcastHeight / 2.5);
+            $($(this).children('.video')[1]).css('top', broadcastHeight * 1.1);
+            $($(this).children('.video')[2]).css('left', '60%');
+            $($(this).children('.video')[2]).css('top', broadcastHeight * 1.1);
+            // style arrow
+            $(this).children('.arrow1').css('top', '10%');
+            $(this).children('.arrow1').css('left', '5%');
+            $(this).children('.arrow1').width('40%');
+            $(this).children('.arrow1').height('10%');
+            $(this).children('.arrow2').css('top', '10%');
+            $(this).children('.arrow2').css('left', '5%');
+            $(this).children('.arrow2').width('10%');
+            $(this).children('.arrow2').height('70%');
+            $(this).children('.arrowhead').css('top', '75%');
+            $(this).children('.arrowhead').css('border-width', $('.arrow2').width());
+          }
+          i++;
+        });
+      }
+    });
+  </script>
 </head>
-<body lang="en">
+<body lang="de">
   <header>
+    <h1>Absolute-Grid Example</h1>
   </header>
+  
+  <div class="month">
+    <h2>April 2012</h2>
+    <figure  class="broadcast">
+      <img src="images/img1.png">
+      <figcaption>Sendung April 2012</figcaption>
+    </figure>
+    <div class="arrow1"></div>
+    <div class="arrow2"></div>
+    <div class="arrowhead"></div>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 1</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png" >
+      <figcaption>Videbeitrag 2</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 3</figcaption>
+    </figure>
+  </div>
+
+  <div class="month">
+    <h2>März 2012</h2>
+    <figure  class="broadcast">
+      <img src="images/img1.png">
+      <figcaption>Sendung März 2012</figcaption>
+    </figure>
+    <div class="arrow1"></div>
+    <div class="arrow2"></div>
+    <div class="arrowhead"></div>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 1</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png" >
+      <figcaption>Videbeitrag 2</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 3</figcaption>
+    </figure>
+  </div>
+
+  <div class="month">
+    <h2>Februar 2012</h2>
+    <figure  class="broadcast">
+      <img src="images/img1.png">
+      <figcaption>Sendung Februar 2012</figcaption>
+    </figure>
+    <div class="arrow1"></div>
+    <div class="arrow2"></div>
+    <div class="arrowhead"></div>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 1</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png" >
+      <figcaption>Videbeitrag 2</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 3</figcaption>
+    </figure>
+  </div>
+  
+  <div class="month">
+    <h2>Januar 2012</h2>
+    <figure  class="broadcast">
+      <img src="images/img1.png">
+      <figcaption>Sendung Januar 2012</figcaption>
+    </figure>
+    <div class="arrow1"></div>
+    <div class="arrow2"></div>
+    <div class="arrowhead"></div>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 1</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png" >
+      <figcaption>Videbeitrag 2</figcaption>
+    </figure>
+    <figure  class="video">
+      <img src="images/img2.png">
+      <figcaption>Videbeitrag 3</figcaption>
+    </figure>
+  </div>
 </body>
 </html>
